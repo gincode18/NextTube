@@ -1,7 +1,8 @@
 import { type Session } from "next-auth";
 import { SessionProvider } from "next-auth/react";
 import { type AppType } from "next/app";
-
+import { ThemeProvider } from "~/Components/themeprovider";
+import { ModeToggle } from "~/Components/ToggleTheme";
 import { api } from "~/utils/api";
 
 import "~/styles/globals.css";
@@ -12,7 +13,15 @@ const MyApp: AppType<{ session: Session | null }> = ({
 }) => {
   return (
     <SessionProvider session={session}>
-      <Component {...pageProps} />
+      <ThemeProvider
+        attribute="data-theme"
+        defaultTheme="aqua"
+        enableSystem={false}
+        storageKey="notes-theme"
+      >
+        <ModeToggle></ModeToggle>
+        <Component {...pageProps} />
+      </ThemeProvider>
     </SessionProvider>
   );
 };
