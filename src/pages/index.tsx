@@ -1,43 +1,64 @@
-import { signIn, signOut, useSession } from "next-auth/react";
+import { type NextPage } from "next";
 import Head from "next/head";
-import Link from "next/link";
-import Logo from "~/Components/Icons/Logo";
-import { Button } from "~/Components/ui/button";
-
 import { api } from "~/utils/api";
+import {
+  MuliColumnVideo,
+  Layout,
+  LoadingMessage,
+  ErrorMessage,
+} from "../Components/Components";
+const Home: NextPage = () => {
+  const { data, isLoading, error } = api.video.getRandomVideos.useQuery(40);
 
-export default function Home() {
-  const hello = api.post.hello.useQuery({ text: "from tRPC" });
+  const Error = () => {
+    if (isLoading) {
+      return <LoadingMessage />;
+    } else if (error || !data) {
+      return (
+        <ErrorMessage
+          icon="GreenPlay"
+          message="No Videos"
+          description="Sorry there is no videos at this time."
+        />
+      );
+    } else {
+      return <></>;
+    }
+  };
 
   return (
     <>
-    <Logo className="group hover:bg-inherit h-60 w-60 lg:h-80 lg:w-80"></Logo>
-    <Button variant={"secondary"}>difhvnuf</Button>
-      <AuthShowcase></AuthShowcase>
+      <Head>
+        <title>Vidchill</title>
+        <meta
+          name="description"
+          content=" Enjoy the videos and music you love, upload original content, and share it all with friends, family, and the world on VidChill."
+        />
+        <link rel="icon" href="/favicon.ico" />
+      </Head>
+      <Layout>
+        {!data ? (
+          <Error />
+        ) : (
+          <>
+            <MuliColumnVideo
+              videos={data.videos.map((video) => ({
+                id: video?.id || "",
+                title: video?.title || "",
+                thumbnailUrl: video?.thumbnailUrl || "",
+                createdAt: video?.createdAt || new Date(),
+                views: video?.views || 0,
+              }))}
+              users={data.users.map((user) => ({
+                name: user?.name || "",
+                image: user?.image || "",
+              }))}
+            />
+          </>
+        )}
+      </Layout>
     </>
   );
-}
+};
 
-function AuthShowcase() {
-  const { data: sessionData } = useSession();
-
-  const { data: secretMessage } = api.post.getSecretMessage.useQuery(
-    undefined, // no input
-    { enabled: sessionData?.user !== undefined },
-  );
-
-  return (
-    <div className="flex flex-col items-center justify-center gap-4">
-      <p className="text-center text-2xl text-white">
-        {sessionData && <span>Logged in as {sessionData.user?.name}</span>}
-        {secretMessage && <span> - {secretMessage}</span>}
-      </p>
-      <button
-        className="rounded-full bg-white/10 px-10 py-3 font-semibold text-white no-underline transition hover:bg-white/20"
-        onClick={sessionData ? () => void signOut() : () => void signIn()}
-      >
-        {sessionData ? "Sign out" : "Sign in"}
-      </button>
-    </div>
-  );
-}
+export default Home;
