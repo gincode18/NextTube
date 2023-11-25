@@ -22,7 +22,7 @@ export const MuliColumnVideo: React.FC<VideoComponentProps> = ({
   videos,
   users,
 }) => (
-  <div className=" bg-base-100 mx-auto grid grid-cols-1 gap-x-4 gap-y-8 md:mx-0 md:max-w-none md:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:max-w-none xl:grid-cols-3 2xl:mx-0 2xl:max-w-none 2xl:grid-cols-3  ">
+  <div className=" mx-auto grid grid-cols-1 gap-x-4 gap-y-8 md:mx-0 md:max-w-none md:grid-cols-2 lg:mx-0 lg:max-w-none lg:grid-cols-3 xl:mx-0 xl:max-w-none xl:grid-cols-3 2xl:mx-0 2xl:max-w-none 2xl:grid-cols-3  ">
     {videos.map((video, index) => {
       const user = users[index];
       if (!user) {
@@ -31,7 +31,7 @@ export const MuliColumnVideo: React.FC<VideoComponentProps> = ({
       return (
         <Link
           href={`/video/${video.id}`}
-          className="flex flex-col items-start justify-between hover:bg-primary-content"
+          className="flex flex-col items-start justify-between hover:bg-accent  rounded-3xl"
           key={video.id}
         >
           <div className="relative w-full">
@@ -129,7 +129,7 @@ export function VideoTitle({
 }) {
   return (
     <h1
-      className={`max-w-md font-semibold leading-6 text-gray-900 group-hover:text-gray-600 ${
+      className={`max-w-md font-semibold leading-6 text-primary group-hover:text-secondary ${
         limitSize ? "text-base" : "text-lg"
       } ${limitHeight ? "max-h-12 w-full overflow-hidden" : ""}`}
     >
@@ -140,7 +140,7 @@ export function VideoTitle({
 
 export function VideoDescription({ description }: { description: string }) {
   return (
-    <p className="mt-2 h-5 max-w-md overflow-hidden text-sm leading-6 text-gray-600">
+    <p className="mt-2 h-5 max-w-md overflow-hidden text-sm leading-6 text-primary">
       {description}
     </p>
   );
@@ -154,12 +154,12 @@ export function VideoInfo({
 }) {
   return (
     <div className="mt-1 flex max-h-6 items-start overflow-hidden text-sm">
-      <p className=" text-gray-600">
+      <p className=" text-secondary">
         {views}
         <span> Views</span>
       </p>
-      <li className="pl-2 text-sm text-gray-500"></li>
-      <p className=" text-gray-600">{moment(createdAt).fromNow()}</p>
+      <li className="pl-2 text-sm  text-primary"></li>
+      <p className=" text-primary">{moment(createdAt).fromNow()}</p>
     </div>
   );
 }
@@ -184,7 +184,7 @@ export function UserImage({
 }
 export function UserName({ name }: { name: string }) {
   return (
-    <p className="max-h-6 overflow-hidden text-sm font-semibold leading-6 text-gray-900">
+    <p className="max-h-6 overflow-hidden text-sm font-semibold leading-6 text-primary">
       {name}
     </p>
   );

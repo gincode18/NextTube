@@ -145,11 +145,11 @@ export default function Navbar({ children }: NavbarProps) {
 
   return (
     <>
-      <div className=" fixed z-50 w-full border border-gray-200 bg-white shadow-sm">
+      <div className=" fixed z-50 w-full border border-primary  backdrop-blur-xl bg-transparent shadow-sm">
         <div className="mx-auto flex max-w-full px-6 lg:px-16 xl:grid xl:grid-cols-12">
           <div className="flex flex-shrink-0 items-center lg:static xl:col-span-2">
             <Link href="/#" aria-label="Home">
-              <Logo className="h-10" />
+              <Logo className="h-20 group "  />
             </Link>
           </div>
           <div className="w-full min-w-0 flex-1 lg:px-0 xl:col-span-8">
@@ -160,12 +160,12 @@ export default function Navbar({ children }: NavbarProps) {
                 </label>
                 <div className="relative  ">
                   <div className="pointer-events-none absolute inset-y-0 left-0 flex items-center pl-3">
-                    <Search className="h-5 w-5 stroke-gray-400" />
+                    <Search className="h-5 w-5 stroke-primary" />
                   </div>
                   <input
                     id="search"
                     name="search"
-                    className="block w-full rounded-md border-0 py-1.5 pl-10 pr-3 text-gray-900 ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-500 sm:text-sm sm:leading-6 "
+                    className="block w-full bg-secondary rounded-md border-0 py-1.5 pl-10 pr-3 text-primary ring-1 ring-inset ring-secondary placeholder:text-accent focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 "
                     placeholder="Search"
                     type="search"
                     onChange={(e: ChangeEvent<HTMLInputElement>) =>
@@ -202,17 +202,17 @@ export default function Navbar({ children }: NavbarProps) {
                 leaveFrom="transform opacity-100 scale-100"
                 leaveTo="transform opacity-0 scale-95"
               >
-                <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-white py-1 shadow-lg ring-1 ring-black ring-opacity-5 focus:outline-none">
+                <Menu.Items className="absolute right-0 z-10 mt-2 w-48 origin-top-right rounded-md bg-primary py-1 shadow-lg ring-1 ring-secondary ring-opacity-5 focus:outline-none">
                   {sessionData ? (
                     <div className=" mx-4 my-2 flex  ">
                       {/* <div className="h-9 w-9"> */}
                       <UserImage image={sessionData?.user.image || ""} />
                       {/* </div> */}
                       <div className="ml-2 flex w-full flex-col justify-start truncate ">
-                        <p className="truncate text-sm font-semibold text-gray-700">
+                        <p className="truncate text-sm font-semibold text-primary">
                           {sessionData && <span>{sessionData.user?.name}</span>}
                         </p>
-                        <p className=" truncate text-sm text-gray-600">
+                        <p className=" truncate text-sm text-primary">
                           {sessionData && (
                             <span className="">{sessionData.user?.email}</span>
                           )}
@@ -220,7 +220,7 @@ export default function Navbar({ children }: NavbarProps) {
                       </div>
                     </div>
                   ) : (
-                    <p className="mx-4 my-2 flex text-center text-sm font-semibold text-gray-700 ">
+                    <p className="mx-4 my-2 flex text-center text-sm font-semibold text-primary ">
                       Menu
                     </p>
                   )}
@@ -238,13 +238,13 @@ export default function Navbar({ children }: NavbarProps) {
                           }}
                           href={item.path || "/"}
                           className={classNames(
-                            active ? "bg-gray-100 " : "",
-                            "block px-4 py-2 text-sm text-gray-700",
-                            item.lineAbove ? "border-t border-gray-200" : ""
+                            active ? "bg-secondary " : "",
+                            "block px-4 py-2 text-sm text-accent",
+                            item.lineAbove ? "border-t border-accent" : ""
                           )}
                         >
                           <div className="flex items-center ">
-                            {item.icon("h-4 w-4 stroke-gray-700")}
+                            {item.icon("h-4 w-4 stroke-accent")}
                             <div className="pl-2">{item.name}</div>
                           </div>
                         </Link>
@@ -260,7 +260,8 @@ export default function Navbar({ children }: NavbarProps) {
             ) : (
               <div className="flex flex-row space-x-3 ">
                 <Button
-                  variant="tertiary-gray"
+                  variant="primary"
+                  className=" bg-primary hover:bg-accent"
                   size="md"
                   onClick={!sessionData ? () => void signIn() : () => ""}
                 >
@@ -268,6 +269,7 @@ export default function Navbar({ children }: NavbarProps) {
                 </Button>
                 <Button
                   variant="primary"
+                  className=" bg-secondary hover:bg-accent"
                   size="md"
                   onClick={!sessionData ? () => void signIn() : () => ""}
                 >

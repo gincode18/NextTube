@@ -18,10 +18,10 @@ export default function Layout({ children, closeSidebar }: LayoutProps) {
       <Navbar>
         <button
           type="button"
-          className="-mx-2 inline-flex items-center  justify-center rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary-500"
+          className="-mx-2 inline-flex items-center  justify-center rounded-md p-2 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary"
           onClick={() => setSidebarOpen(true)}
         >
-          <Menu className="h-6 w-6 stroke-gray-400" aria-hidden="true" />
+          <Menu className="h-6 w-6 stroke-primary" aria-hidden="true" />
         </button>
       </Navbar>
 
@@ -35,7 +35,7 @@ export default function Layout({ children, closeSidebar }: LayoutProps) {
       </div>
 
       <div className={classNames(closeSidebar ? "lg:pl-20" : "lg:pl-56")}>
-        <main className="py-24">
+        <main className="py-24 bg-base-300">
           <div className=" mx-auto px-4 sm:px-6 lg:px-8">
             <div className="space-x-4">{children}</div>
           </div>

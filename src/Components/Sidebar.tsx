@@ -160,7 +160,7 @@ export default function Sidebar({
       >
         {/*  Sidebar component FOR DESKTOP, swap this element with another sidebar if you like */}
 
-        <div className="flex grow flex-col gap-y-5 overflow-y-auto border  border-primary  bg-base-300 px-6 pb-4">
+        <div className="flex grow flex-col gap-y-5 overflow-y-auto border  border-primary  bg-base-100 px-6 pb-4">
           <nav className="flex flex-1 flex-col pt-8">
             <ul role="list" className="flex flex-1 flex-col gap-y-7">
               <li>
@@ -179,15 +179,15 @@ export default function Sidebar({
                         }}
                         className={classNames(
                           item.current
-                            ? "  bg-secondary text-primary"
-                            : " text-gray-700 hover:bg-secondary hover:text-primary",
+                            ? "  bg-secondary text-primary border border-primary"
+                            : " text-secondary  border  border-primary hover:bg-secondary hover:text-primary ",
                           "group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
                         )}
                       >
                         {item.current
-                          ? item.icon("h-5 w-5 shrink-0 stroke-primary-600 ")
+                          ? item.icon("h-5 w-5 shrink-0 stroke-primary group-hover:animate-bounce ")
                           : item.icon(
-                              "h-5 w-5 shrink-0  stroke-gray-500  group-hover:stroke-primary-600"
+                              "h-5 w-5 shrink-0  stroke-primary  group-hover:stroke-primary group-hover:animate-bounce"
                             )}
                         <p className={classNames(closeSidebar ? "hidden" : "")}>
                           {item.name}
@@ -209,11 +209,11 @@ export default function Sidebar({
                         : void signIn();
                     }
                   }}
-                  className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-primary-600"
+                  className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6   text-secondary hover:bg-secondary hover:text-primary border border-primary"
                 >
                   <Settings
                     className={
-                      "h-5 w-5 shrink-0 stroke-gray-500 group-hover:stroke-primary-600"
+                      "h-5 w-5 shrink-0 stroke-primary group-hover:stroke-primary group-hover:animate-spin"
                     }
                   />
                   <p className={classNames(closeSidebar ? "hidden" : "")}>
@@ -222,11 +222,11 @@ export default function Sidebar({
                 </Link>
                 <Link
                   href="/Blog/Help"
-                  className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-primary-600"
+                  className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-secondary hover:bg-secondary hover:text-primary border border-primary"
                 >
                   <HelpCircle
                     className={
-                      "h-5 w-5 shrink-0 stroke-gray-500 group-hover:stroke-primary-600"
+                      "h-5 w-5 shrink-0 stroke-primary group-hover:stroke-primary group-hover:animate-bounce"
                     }
                   />
                   <p className={classNames(closeSidebar ? "hidden" : "")}>
