@@ -2,7 +2,8 @@ import { Fragment } from "react";
 import { Menu, Transition } from "@headlessui/react";
 // import { Logo } from "./Icons/Logo";
 import Link from "next/link";
-import Button from "./Buttons/Button";
+// import Button from "./Buttons/Button";
+import { Button } from "./ui/button";
 import { signIn, signOut, useSession } from "next-auth/react";
 import React, { useState } from "react";
 import {
@@ -145,11 +146,11 @@ export default function Navbar({ children }: NavbarProps) {
 
   return (
     <>
-      <div className=" fixed z-50 w-full border border-primary  backdrop-blur-xl bg-transparent shadow-sm">
+      <div className=" fixed z-50 w-full border border-primary  bg-transparent shadow-sm backdrop-blur-xl">
         <div className="mx-auto flex max-w-full px-6 lg:px-16 xl:grid xl:grid-cols-12">
           <div className="flex flex-shrink-0 items-center lg:static xl:col-span-2">
             <Link href="/#" aria-label="Home">
-              <Logo className="h-20 group "  />
+              <Logo className="group h-20 " />
             </Link>
           </div>
           <div className="w-full min-w-0 flex-1 lg:px-0 xl:col-span-8">
@@ -165,7 +166,7 @@ export default function Navbar({ children }: NavbarProps) {
                   <input
                     id="search"
                     name="search"
-                    className="block w-full bg-secondary rounded-md border-0 py-1.5 pl-10 pr-3 text-primary ring-1 ring-inset ring-secondary placeholder:text-accent focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 "
+                    className="block w-full rounded-md border-0 bg-secondary py-1.5 pl-10 pr-3 text-primary ring-1 ring-inset ring-secondary placeholder:text-accent focus:ring-2 focus:ring-inset focus:ring-primary sm:text-sm sm:leading-6 "
                     placeholder="Search"
                     type="search"
                     onChange={(e: ChangeEvent<HTMLInputElement>) =>
@@ -185,7 +186,7 @@ export default function Navbar({ children }: NavbarProps) {
             {/* 3 dots  and Profile dropdown */}
             <Menu as="div" className="relative ml-5 flex-shrink-0">
               <div>
-                <Menu.Button className="flex rounded-full focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2">
+                <Menu.Button className="focus:ring-primary-500 flex rounded-full focus:outline-none focus:ring-2 focus:ring-offset-2">
                   {sessionData ? (
                     <UserImage image={sessionData?.user.image || ""} />
                   ) : (
@@ -240,7 +241,7 @@ export default function Navbar({ children }: NavbarProps) {
                           className={classNames(
                             active ? "bg-secondary " : "",
                             "block px-4 py-2 text-sm text-accent",
-                            item.lineAbove ? "border-t border-accent" : ""
+                            item.lineAbove ? "border-t border-accent" : "",
                           )}
                         >
                           <div className="flex items-center ">
@@ -260,17 +261,17 @@ export default function Navbar({ children }: NavbarProps) {
             ) : (
               <div className="flex flex-row space-x-3 ">
                 <Button
-                  variant="primary"
+                  variant={"default"}
                   className=" bg-primary hover:bg-accent"
-                  size="md"
+                  size={"default"}
                   onClick={!sessionData ? () => void signIn() : () => ""}
                 >
                   Log in
                 </Button>
                 <Button
-                  variant="primary"
+                  variant={"default"}
                   className=" bg-secondary hover:bg-accent"
-                  size="md"
+                  size={"default"}
                   onClick={!sessionData ? () => void signIn() : () => ""}
                 >
                   Sign up
