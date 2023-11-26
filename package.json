@@ -38,6 +38,7 @@
     "react-cropper": "^2.3.3",
     "react-dom": "18.2.0",
     "react-loading": "^2.0.3",
+    "react-player": "^2.13.0",
     "superjson": "^1.13.1",
     "tailwind-merge": "^2.0.0",
     "tailwindcss-animate": "^1.0.7",
