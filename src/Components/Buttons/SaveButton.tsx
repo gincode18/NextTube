@@ -25,7 +25,7 @@ export default function SaveButton({ videoId }: { videoId: string }) {
       const initialCheckedStatus: { [key: string]: boolean } = {};
       playlists?.forEach((playlist) => {
         initialCheckedStatus[playlist.id] = playlist.videos.some(
-          (videoItem) => videoItem.videoId === videoId
+          (videoItem) => videoItem.videoId === videoId,
         );
       });
 
@@ -41,7 +41,7 @@ export default function SaveButton({ videoId }: { videoId: string }) {
     input: {
       playlistId: string;
       videoId: string;
-    }
+    },
   ) => {
     addVideoToPlaylistMutation.mutate(input);
     setCheckedStatus({
@@ -66,7 +66,7 @@ export default function SaveButton({ videoId }: { videoId: string }) {
             void refetchPlaylists(); // Refetch playlists data after successful mutation
             setNewPlaylistName(""); // Clear the input field
           },
-        }
+        },
       );
     }
   };
@@ -79,8 +79,8 @@ export default function SaveButton({ videoId }: { videoId: string }) {
     <>
       {/* 1 Start  */}
       <Button
-     variant={"secondary"}
-       size={"lg"}
+        variant={"secondary"}
+        size={"lg"}
         onClick={sessionData ? () => setOpen(true) : () => void signIn()}
         className="item-end flex text-primary"
       >
@@ -116,11 +116,11 @@ export default function SaveButton({ videoId }: { videoId: string }) {
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className=" relative m-2 flex !max-w-xs transform flex-col items-start justify-start overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-center shadow-xl transition-all sm:my-8 sm:w-full  sm:p-6">
+                <Dialog.Panel className=" relative m-2 flex !max-w-xs transform flex-col items-start justify-start overflow-hidden rounded-lg bg-transparent backdrop-blur-xl px-4 pb-4 pt-5 text-center shadow-xl transition-all sm:my-8 sm:w-full  sm:p-6">
                   <div className="absolute right-0 top-0  hidden pr-4 pt-4 sm:block">
                     <button
                       type="button"
-                      className="rounded-md bg-white text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-primary-500 focus:ring-offset-2"
+                      className="focus:ring-primary-500 rounded-md bg-primary text-gray-400 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2"
                       onClick={() => setOpen(false)}
                     >
                       <span className="sr-only">Close</span>
@@ -130,7 +130,7 @@ export default function SaveButton({ videoId }: { videoId: string }) {
                   <div className="mb-2 mt-5 text-center sm:mt-0">
                     <Dialog.Title
                       as="h3"
-                      className=" text-base font-semibold leading-6 text-gray-900"
+                      className=" text-base font-semibold leading-6 text-primary"
                     >
                       Save Video To Playlist
                     </Dialog.Title>
@@ -156,7 +156,7 @@ export default function SaveButton({ videoId }: { videoId: string }) {
                                   playlistId: playlist.id,
                                 })
                               }
-                              className="h-4 w-4 rounded border-gray-300 text-primary-600 focus:ring-primary-600"
+                              className="text-primary-600 focus:ring-primary-600 h-4 w-4 rounded border-primary"
                             />
                           </div>
                           {/* 7 start End */}
@@ -165,7 +165,7 @@ export default function SaveButton({ videoId }: { videoId: string }) {
                           <div className="ml-3 text-sm leading-6">
                             <label
                               htmlFor="comments"
-                              className="font-medium text-gray-900"
+                              className="font-medium "
                             >
                               {playlist.title}
                             </label>
@@ -196,16 +196,16 @@ export default function SaveButton({ videoId }: { videoId: string }) {
                           onKeyUp={(event) => {
                             if (event.key === "Enter") handleCreatePlaylist();
                           }}
-                          className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                          className="focus:ring-primary-600 block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset sm:text-sm sm:leading-6"
                           placeholder="  Enter Playlist Name "
                         />
                       </div>
                     </div>
                     <Button
-                      variant="primary"
+                      variant="default"
                       onClick={handleCreatePlaylist}
                       className="p-2"
-                      size="xl"
+                      size={"default"}
                     >
                       Create New Playlist
                     </Button>

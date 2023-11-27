@@ -7,7 +7,7 @@ export function Content({
     <div className=" mx-auto mt-16 flex max-w-3xl flex-col gap-6  ">
       {sections.map((section, index) => (
         <div key={index}>
-          <h1 className="mb-2 text-lg font-semibold text-gray-900">
+          <h1 className="mb-2 text-lg font-semibold ">
             {section.title}
           </h1>
           <p>{section.content}</p>
