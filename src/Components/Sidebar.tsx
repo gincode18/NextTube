@@ -245,7 +245,7 @@ export default function Sidebar({
           className="relative z-50 lg:hidden"
           onClose={setSidebarOpen}
         >
-          <Transition.Child
+          {/* <Transition.Child
             as={Fragment}
             enter="transition-opacity ease-linear duration-300"
             enterFrom="opacity-0"
@@ -254,8 +254,8 @@ export default function Sidebar({
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-gray-900/80" />
-          </Transition.Child>
+            <div className="fixed inset-0 bg-base-100" />
+          </Transition.Child> */}
 
           <div className="fixed inset-0 flex">
             <Transition.Child
@@ -280,7 +280,7 @@ export default function Sidebar({
                   </button>
                 </div>
                 {/* Sidebar component FOR MOBILE, swap this element with another sidebar if you like */}
-                <div className=" flex grow  flex-col gap-y-5 overflow-y-auto border-r  border-gray-200 bg-white  px-6 pb-4">
+                <div className=" flex grow  flex-col gap-y-5 overflow-y-auto border-r  border-primary  bg-transparent backdrop-blur-xl  px-6 pb-4">
                   <nav className="flex flex-1 flex-col pt-4">
                     <ul role="list" className="flex flex-1 flex-col gap-y-4">
                       <Logo className="w-24" />
@@ -296,17 +296,17 @@ export default function Sidebar({
                                 }}
                                 className={classNames(
                                   item.current
-                                    ? " bg-gray-50 text-primary-600"
-                                    : " text-gray-700 hover:bg-gray-50 hover:text-primary-600",
+                                    ? " bg-secondary text-primary"
+                                    : " text-secondary hover:bg-primary hover:text-primary",
                                   "group flex gap-x-3 rounded-md px-2 py-1.5 text-sm font-semibold leading-6"
                                 )}
                               >
                                 {item.current
                                   ? item.icon(
-                                      "h-5 w-5 shrink-0 stroke-primary-600"
+                                      "h-5 w-5 shrink-0 stroke-primary"
                                     )
                                   : item.icon(
-                                      "h-5 w-5 shrink-0  stroke-gray-500  group-hover:stroke-primary-600"
+                                      "h-5 w-5 shrink-0 stroke-primary  group-hover:stroke-secondary"
                                     )}
                                 {item.name}
                               </Link>
@@ -341,7 +341,7 @@ export default function Sidebar({
                       </li>
 
                       {sessionData ? (
-                        <div className="my-2 flex flex-row bg-blue-300">
+                        <div className="my-2 flex flex-row bg-primary">
                           <UserImage image={sessionData?.user.image || ""} />
                           <div className="ml-2 flex w-full flex-col  justify-start truncate text-sm ">
                             <p className="font-semibold text-gray-700">

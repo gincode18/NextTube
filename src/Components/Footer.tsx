@@ -45,15 +45,15 @@ export default function Footer() {
     },
   ];
   return (
-    <footer className="fixed bottom-0 z-50 w-full border border-gray-200 bg-white shadow-sm ">
+    <footer className="fixed bottom-0 z-50 w-full border border-primary bg-base-100  bg-opacity-30 backdrop-blur-sm shadow-sm ">
       <nav className="isolate flex rounded-lg shadow" aria-label="Tabs">
         {tabs.map((tab) => (
           <Link
             key={tab.name}
             href="#"
             className={classNames(
-              tab.current ? " text-primary-600" : "text-gray-600",
-              "group relative min-w-0 flex-1 overflow-hidden px-4 py-4 text-center text-xs font-medium  hover:bg-gray-50 focus:z-10"
+              tab.current ? " text-primary" : "text-accent",
+              "group relative min-w-0 flex-1 overflow-hidden px-4 py-4 text-center text-xs font-medium  hover:bg-secondary focus:z-10 focus:bg-secondary"
             )}
             onClick={(e) => {
               e.preventDefault();
@@ -66,8 +66,8 @@ export default function Footer() {
           >
             <div className="flex flex-col items-center ">
               {tab.current
-                ? tab.icon("h-4 w-4 shrink-0 stroke-primary-600 ")
-                : tab.icon("h-4 w-4 shrink-0  stroke-gray-600")}
+                ? tab.icon("h-4 w-4 shrink-0 stroke-primary ")
+                : tab.icon("h-4 w-4 shrink-0  stroke-accent")}
               <span>{tab.name}</span>
             </div>
           </Link>
