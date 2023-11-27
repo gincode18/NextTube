@@ -75,10 +75,10 @@ export const PlaylistPage: React.FC<PlaylistPageProps> = ({
               <div className="mt-4 flex flex-row gap-2 ">
                 <UserImage image={user.image || ""} />
                 <div className="flex flex-col ">
-                  <p className="w-max text-sm font-semibold leading-6 text-gray-900">
+                  <p className="w-max text-sm font-semibold leading-6 text-primary">
                     {user.name || ""}
                   </p>
-                  <p className=" text-sm text-gray-600">
+                  <p className=" text-sm text-secondary">
                     {user.followers}
                     <span> Followers</span>
                   </p>
@@ -131,11 +131,11 @@ export function MultiColumnPlaylist({
       {playlists?.map((playlist) => (
         <Link
           href={`/playlist/${playlist.id}`}
-          className="flex flex-col items-start justify-between hover:bg-gray-100"
+          className="flex flex-col items-start justify-between hover:bg-accent"
           key={playlist.id}
         >
           <SinglePlaylist playlist={playlist}>
-            <p className="text-regular mt-2 max-h-12 overflow-hidden text-gray-600">
+            <p className="text-regular mt-2 max-h-12 overflow-hidden text-primary">
               {playlist?.description}
             </p>
           </SinglePlaylist>
@@ -161,9 +161,9 @@ export function SinglePlaylist({
     <div className="relative w-full">
       <div className="relative w-full">
         <Thumbnail thumbnailUrl={playlist?.playlistThumbnail} />
-        <div className="absolute inset-x-0 bottom-0 max-h-32 rounded-b-2xl bg-gray-500 bg-opacity-60 backdrop-blur-lg">
+        <div className="absolute inset-x-0 bottom-0 max-h-32 rounded-b-2xl bg-base-300 bg-opacity-60 backdrop-blur-lg">
           <div className="m-6">
-            <div className="mt-2 flex place-content-between items-start  gap-x-2 text-sm font-semibold text-white">
+            <div className="mt-2 flex place-content-between items-start  gap-x-2 text-sm font-semibold text-secondary">
               <p>Playlist</p>
               <p>
                 {playlist.videoCount}
@@ -171,7 +171,7 @@ export function SinglePlaylist({
               </p>
             </div>
             <div className="mt-2 flex items-start gap-x-2 ">
-              <p className="text-sm text-white">
+              <p className="text-sm text-secondary">
                 {moment(playlist.createdAt).fromNow()}
               </p>
             </div>
@@ -182,7 +182,7 @@ export function SinglePlaylist({
         <div className="items-top relative mt-4 flex gap-x-4 ">
           <div className=" w-full ">
             <div className=" w-100 flex ">
-              <h3 className="h-auto w-full text-2xl font-medium text-gray-900 group-hover:text-gray-600">
+              <h3 className="h-auto w-full text-2xl font-medium text-primary group-hover:text-secondary">
                 {playlist.title}
               </h3>
             </div>

@@ -3,7 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { useEffect } from "react";
-import { Button, FollowButton } from "./Buttons/Buttons";
+import { FollowButton } from "./Buttons/Buttons";
+import { Button } from "./ui/button";
 import { useSession } from "next-auth/react";
 import { Edit } from "./Icons/Icons";
 import { ErrorMessage, LoadingMessage, UserImage } from "./Components";
@@ -97,37 +98,40 @@ export default function ProfileHeader() {
             <div className="!-mt-6 sm:-mt-16 sm:flex sm:items-end sm:space-x-5">
               <div className="flex">
                 <UserImage
-                  className="h-24 w-24 rounded-full ring-4 ring-white sm:h-32 sm:w-32"
+                  className="h-24 w-24 rounded-full ring-4 ring-primary sm:h-32 sm:w-32"
                   image={channel.image || ""}
                 />
               </div>
               <div className="mt-6 sm:flex sm:min-w-0 sm:flex-1 sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
                 <div className="sm: mt-6 min-w-0 flex-1 md:block">
-                  <h1 className="truncate text-2xl font-bold text-gray-900">
+                  <h1 className="truncate text-2xl font-bold text-primary">
                     {channel.name}
                   </h1>
-                  <p className="text-regular text-gray-600">{channel.handle}</p>
+                  <p className="text-regular text-secondary">
+                    {channel.handle}
+                  </p>
                   <div className="mt-1 flex items-start text-xs">
-                    <p className="text-sm text-gray-600">
+                    <p className="text-sm text-secondary">
                       {channel.followers} Followers
                     </p>
-                    <li className="pl-2 text-sm text-gray-500"></li>
-                    <p className="text-sm text-gray-600">
+                    <li className="pl-2 text-sm text-primary"></li>
+                    <p className="text-sm text-secondary">
                       {channel.followings} Following
                     </p>
                   </div>
                 </div>
                 <div className=" mt-6 flex justify-stretch space-y-3 sm:space-x-4 sm:space-y-0">
                   {userId == sessionData?.user.id ? (
-                    <Button
-                      variant="primary"
-                      size="2xl"
-                      href="/Settings"
-                      className="!-5 ml-2 flex"
-                    >
-                      <Edit className="mr-2 h-5 w-5 shrink-0 stroke-white" />
-                      Edit
-                    </Button>
+                    <Link href="/Settings">
+                      <Button
+                        variant="default"
+                        size="lg"
+                        className="!-5 ml-2 flex"
+                      >
+                        <Edit className="mr-2 h-5 w-5 shrink-0  stroke-secondary" />
+                        Edit
+                      </Button>
+                    </Link>
                   ) : (
                     <FollowButton
                       followingId={userId as string}
@@ -141,7 +145,7 @@ export default function ProfileHeader() {
             </div>
           </div>
           {/* BELOW ARE TABS    */}
-          <div className="mb-8 mt-4 overflow-x-auto  border-b border-gray-200">
+          <div className="mb-8 mt-4 overflow-x-auto  border-b border-primary">
             <nav
               className=" -mb-px flex min-w-max whitespace-nowrap"
               aria-label="Tabs"
@@ -156,9 +160,9 @@ export default function ProfileHeader() {
                   }}
                   className={classNames(
                     tab.current
-                      ? "border-primary-500 bg-primary-50 text-primary-600"
-                      : "border-transparent text-gray-500 hover:border-gray-300 hover:text-gray-700",
-                    "  w-full border-b-4  px-1 py-4 text-center text-sm font-medium "
+                      ? "border-primary bg-primary text-accent"
+                      : "border-transparent text-secondary hover:border-primary hover:text-primary",
+                    "  w-full border-b-4  px-1 py-4 text-center text-sm font-medium ",
                   )}
                   aria-current={tab.current ? "page" : undefined}
                 >
