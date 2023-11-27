@@ -2,8 +2,10 @@ import { api } from "~/utils/api";
 import moment from "moment";
 import { useState } from "react";
 import { signIn, useSession } from "next-auth/react";
+// import { UserImage } from "./Components";
+import { Button } from "./ui/button";
 import { UserImage } from "./Components";
-import Button from "./Buttons/Button";
+
 
 interface Comment {
   comment: {
@@ -63,9 +65,9 @@ export default function CommentSection({
   return (
     <>
       <div className="py-5 ">
-        <div className="flex space-x-3 rounded-2xl border border-gray-200 p-6 shadow-sm">
+        <div className="flex space-x-3 rounded-2xl border border-primary p-6 shadow-sm">
           <div className="min-w-0 flex-1 space-y-3">
-            <p className="block text-sm font-medium leading-6 text-gray-900">
+            <p className="block text-sm font-medium leading-6">
               {comments.length}
               <span> Comments</span>
             </p>
@@ -80,24 +82,24 @@ export default function CommentSection({
                       id="comment"
                       value={commentInput}
                       onChange={(e) => setCommentInput(e.target.value)}
-                      className="block w-full rounded-md border-0 p-4 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                      className="block w-full rounded-md border-0 p-4 py-1.5 text-primary shadow-sm ring-1 ring-inset ring-primary placeholder:text-secondary focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
                       placeholder="Add A Comment"
                     />
                   </div>
                   <div className="flex-shrink-0">
-                    <Button variant="primary" size="xl" type="submit">
+                    <Button variant="default" size="lg" type="submit">
                       Post
                     </Button>
                   </div>
                 </div>
               </form>
             ) : (
-              <button
+              <Button
                 onClick={!sessionData ? () => void signIn() : () => ""}
-                className="align block w-full rounded-md border-0 p-4 py-1.5 text-left text-gray-500 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 sm:text-sm sm:leading-6"
+                className="align block w-full rounded-md border-0 p-4 py-1.5 text-left  shadow-sm ring-1 ring-inset  placeholder:text-accent focus:ring-2 sm:text-sm sm:leading-6"
               >
                 Add A Comment
-              </button>
+              </Button>
             )}
             {comments
               .sort(
@@ -107,22 +109,22 @@ export default function CommentSection({
               )
               .map(({ user, comment }) => (
                 <div className="my-6" key={comment.id}>
-                  <div className="my-4 border-t border-gray-200" />
+                  <div className="my-4 border-t border-primary" />
                   <div className="flex gap-2">
                     <UserImage image={user.image || ""} />
                     <div className="flex w-full flex-col text-sm ">
                       <div className="flex flex-col ">
                         <div className="flex flex-row gap-2  ">
-                          <p className="w-max font-semibold leading-6 text-gray-900">
+                          <p className="w-max font-semibold leading-6 text-primary">
                             {user.name}
                           </p>
-                          <p className=" text-gray-600">
+                          <p className=" ">
                             {moment(comment.createdAt).fromNow()}
                           </p>
                         </div>
-                        <p className="text-gray-600">{user.handle}</p>
+                        <p className="text-secondary">{user.handle}</p>
                       </div>
-                      <p className="my-2 text-gray-600">{comment.message}</p>
+                      <p className="my-2 ">{comment.message}</p>
                     </div>
                   </div>
                 </div>

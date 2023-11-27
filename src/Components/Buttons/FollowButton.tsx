@@ -2,7 +2,8 @@ import React, { useState } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { api } from "~/utils/api";
 import { UserPlus } from "~/Components/Icons/Icons";
-import Button from "./Button";
+// import Button from "./Button";
+import { Button } from "../ui/button";
 
 function classNames(...classes: string[]) {
   return classes.filter(Boolean).join(" ");
@@ -36,8 +37,8 @@ export default function FollowButton({
   return (
     <>
       <Button
-        variant={userChoice.following ? "secondary-gray" : "primary"}
-        size="xl"
+        variant={userChoice.following ? "secondary" : "default"}
+        size={"lg"}
         onClick={
           sessionData
             ? () =>
@@ -54,8 +55,8 @@ export default function FollowButton({
             hideIcon
               ? "hidden"
               : `mr-2 h-5 w-5 shrink-0
-              ${userChoice.following ? "stroke-gray-600 " : "stroke-white "}
-              `
+              ${userChoice.following ? "stroke-primary " : "stroke-secondary "}
+              `,
           )}
         />
         {userChoice.following ? "Following" : "Follow"}

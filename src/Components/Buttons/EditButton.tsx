@@ -3,7 +3,8 @@ import React, { useState, useRef, Fragment } from "react";
 import { Edit } from "../Icons/Icons";
 import Cropper from "react-cropper";
 import "cropperjs/dist/cropper.css";
-import { Button } from "./Buttons";
+// import { Button } from "./Buttons";
+import { Button } from "../ui/button";
 import { api } from "~/utils/api";
 import { useSession } from "next-auth/react";
 import { env } from "~/env.mjs";
@@ -65,7 +66,7 @@ export function EditButton({ video, refetch }: EditButtonProps) {
     };
 
     const formData = new FormData();
-    formData.append("upload_preset", "user_uploads");
+    formData.append("upload_preset", "at52ultu");
     formData.append("file", croppedImage as string);
     fetch(
       "https://api.cloudinary.com/v1_1/" +
@@ -129,7 +130,7 @@ export function EditButton({ video, refetch }: EditButtonProps) {
     <>
       {/* ! step 1 start */}
       <button onClick={() => handleClick()}>
-        <Edit className="mr-2 h-5 w-5 shrink-0 stroke-gray-600" />
+        <Edit className="mr-2 h-5 w-5 shrink-0 stroke-primary" />
       </button>
 
       <Transition.Root show={open} as={Fragment}>
@@ -148,7 +149,7 @@ export function EditButton({ video, refetch }: EditButtonProps) {
             leaveFrom="opacity-100"
             leaveTo="opacity-0"
           >
-            <div className="fixed inset-0 bg-gray-500 bg-opacity-75 transition-opacity" />
+            <div className="fixed inset-0 bg-base-300 bg-opacity-75 transition-opacity" />
           </Transition.Child>
 
           <div className="fixed inset-0 z-10 overflow-y-auto">
@@ -162,7 +163,7 @@ export function EditButton({ video, refetch }: EditButtonProps) {
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
+                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-transparent backdrop-blur-sm px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
                   {/* ! step 1 End */}
                   {/* step 2 start */}
                   {currentPage === 1 && (
@@ -171,30 +172,30 @@ export function EditButton({ video, refetch }: EditButtonProps) {
                         <div className="mt-3 w-full text-center sm:ml-4 sm:mt-0 sm:text-left">
                           <Dialog.Title
                             as="h3"
-                            className="text-base font-semibold leading-6 text-gray-900"
+                            className="text-base font-semibold leading-6 text-primary"
                           >
                             Edit Video
                           </Dialog.Title>
-                          <p className="mt-2 text-sm text-gray-500">
+                          <p className="mt-2 text-sm text-primary">
                             Edit your thumbnail, title, or description
                           </p>
                           <div className="col-span-full">
                             <label
                               htmlFor="cover-photo"
-                              className="block text-sm font-medium leading-6 text-gray-900"
+                              className="block text-sm font-medium leading-6 text-secondary"
                             >
                               Cover photo
                             </label>
-                            <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                            <div className="mt-2 flex justify-center rounded-lg border border-dashed border-primary px-6 py-10">
                               <div className="text-center">
                                 {croppedImage ? (
                                   <img src={croppedImage} alt="Cropped" />
                                 ) : (
                                   <>
-                                    <div className="mt-4 flex text-sm leading-6 text-gray-600">
+                                    <div className="mt-4 flex text-sm leading-6 text-secondary">
                                       <label
                                         htmlFor="file-upload"
-                                        className="relative cursor-pointer rounded-md bg-white font-semibold text-primary-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-primary-600 focus-within:ring-offset-2 hover:text-primary-500"
+                                        className="relative cursor-pointer rounded-md bg-transparent font-semibold text-primary focus-within:outline-none focus-within:ring-2 focus-within:ring-primary focus-within:ring-offset-2 hover:text-secondary"
                                       >
                                         <span>Upload a file</span>
                                         <input
@@ -207,7 +208,7 @@ export function EditButton({ video, refetch }: EditButtonProps) {
                                       </label>
                                       <p className="pl-1">or drag and drop</p>
                                     </div>
-                                    <p className="text-xs leading-5 text-gray-600">
+                                    <p className="text-xs leading-5 text-primary">
                                       PNG, JPG, GIF up to 10MB
                                     </p>
                                   </>
@@ -218,7 +219,7 @@ export function EditButton({ video, refetch }: EditButtonProps) {
                           <div className="flex flex-col gap-2">
                             <label
                               htmlFor="title"
-                              className="block text-sm font-medium leading-6 text-gray-900"
+                              className="block text-sm font-medium leading-6 text-primary"
                             >
                               Title
                             </label>
@@ -229,13 +230,13 @@ export function EditButton({ video, refetch }: EditButtonProps) {
                                 id="title"
                                 onChange={handleInputChange}
                                 value={user.title}
-                                className="block w-full rounded-md border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                                className="block w-full rounded-md border-0 py-1.5 text-primary shadow-sm ring-1 ring-inset ring-primary placeholder:text-secondary focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
                               />
                             </div>
 
                             <label
                               htmlFor="title"
-                              className="block text-sm font-medium leading-6 text-gray-900"
+                              className="block text-sm font-medium leading-6 text-primary"
                             >
                               Description
                             </label>
@@ -246,7 +247,7 @@ export function EditButton({ video, refetch }: EditButtonProps) {
                                 id="description"
                                 value={user.description || ""}
                                 onChange={handleInputChange}
-                                className="block w-full rounded-md border-0 p-4 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
+                                className="block w-full rounded-md border-0 p-4 py-1.5 text-primary shadow-sm ring-1 ring-inset ring-primary placeholder:text-secondary focus:ring-2 focus:ring-inset focus:ring-primary-600 sm:text-sm sm:leading-6"
                               />
                             </div>
                           </div>
@@ -255,14 +256,14 @@ export function EditButton({ video, refetch }: EditButtonProps) {
                       <div className=" relative mt-5 flex flex-row-reverse gap-2 sm:mt-4 ">
                         <Button
                           type="reset"
-                          variant="primary"
+                          variant="default"
                           size="lg"
                           onClick={() => handleSubmit()}
                         >
                           Save
                         </Button>
                         <Button
-                          variant="secondary-gray"
+                          variant="secondary"
                           size="lg"
                           onClick={() => setOpen(false)}
                         >
@@ -347,10 +348,10 @@ export function ImageCropper({
               ref={cropperRef}
             />
             <div className="mt-5 flex justify-end gap-2">
-              <Button variant="secondary-gray" size="lg" onClick={cancelCrop}>
+              <Button variant="secondary" size="lg" onClick={cancelCrop}>
                 cancel
               </Button>
-              <Button variant="primary" size="lg" onClick={completeCrop}>
+              <Button variant="default" size="lg" onClick={completeCrop}>
                 Crop Image
               </Button>
             </div>

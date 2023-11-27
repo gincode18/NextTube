@@ -118,7 +118,7 @@ const VideoPage: NextPage = () => {
                     url={video.videoUrl || ""}
                   />
                 </div>
-                <div className="flex space-x-3 rounded-2xl border border-gray-200 p-4 shadow-sm">
+                <div className="flex space-x-3 rounded-2xl border border-primary p-4 shadow-sm">
                   <div className="min-w-0 flex-1 space-y-3 ">
                     <div className="xs:flex-wrap flex flex-row justify-between gap-4 max-md:flex-wrap">
                       <div className="flex flex-col items-start justify-center gap-1 self-stretch ">

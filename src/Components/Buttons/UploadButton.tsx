@@ -2,7 +2,8 @@ import { Transition, Dialog } from "@headlessui/react";
 import React, { useState, useRef, Fragment } from "react";
 import { Plus } from "../Icons/Icons";
 import "cropperjs/dist/cropper.css";
-import { Button } from "./Buttons";
+// import { Button } from "./Buttons";
+import { Button } from "../ui/button";
 import { api } from "~/utils/api";
 import { useSession } from "next-auth/react";
 import { env } from "~/env.mjs";
@@ -24,7 +25,7 @@ export function UploadButton({ refetch }: { refetch: () => Promise<unknown> }) {
     };
 
     const formData = new FormData();
-    formData.append("upload_preset", "user_uploads");
+    formData.append("upload_preset", "at52ultu");
 
     if (uploadedVideo) {
       formData.append("file", uploadedVideo);
@@ -77,11 +78,11 @@ export function UploadButton({ refetch }: { refetch: () => Promise<unknown> }) {
     <>
       <Button
         onClick={() => handleClick()}
-        variant="primary"
-        size="2xl"
+        variant="default"
+        size="lg"
         className="ml-2 flex"
       >
-        <Plus className="mr-2 h-5 w-5 shrink-0 stroke-white" />
+        <Plus className="mr-2 h-5 w-5 shrink-0 stroke-primary" />
         Upload
       </Button>
 
@@ -115,27 +116,27 @@ export function UploadButton({ refetch }: { refetch: () => Promise<unknown> }) {
                 leaveFrom="opacity-100 translate-y-0 sm:scale-100"
                 leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
               >
-                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-white px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
+                <Dialog.Panel className="relative transform overflow-hidden rounded-lg bg-transparent px-4 pb-4 pt-5 text-left shadow-xl transition-all sm:my-8 sm:w-full sm:max-w-lg sm:p-6">
                   <>
                     <div className="sm:flex sm:items-start  ">
                       <div className="mt-3 w-full text-center sm:ml-4 sm:mt-0 sm:text-left">
                         <Dialog.Title
                           as="h3"
-                          className="text-base font-semibold leading-6 text-gray-900"
+                          className="text-base font-semibold leading-6 text-primary"
                         >
                           Upload Video{" "}
                         </Dialog.Title>
                         <div className="col-span-full">
-                          <div className="mt-2 flex justify-center rounded-lg border border-dashed border-gray-900/25 px-6 py-10">
+                          <div className="mt-2 flex justify-center rounded-lg border border-dashed border-primary5 px-6 py-10">
                             <div className="text-center">
                               {uploadedVideo ? (
                                 <p>Your video has been attached.</p>
                               ) : (
                                 <div>
-                                  <div className="mt-4 flex text-sm leading-6 text-gray-600">
+                                  <div className="mt-4 flex text-sm leading-6 ">
                                     <label
                                       htmlFor="file-upload"
-                                      className="relative cursor-pointer rounded-md bg-white font-semibold text-primary-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-primary-600 focus-within:ring-offset-2 hover:text-primary-500"
+                                      className="relative cursor-pointer rounded-md bg-primary font-semibold text-primary-600 focus-within:outline-none focus-within:ring-2 focus-within:ring-primary-600 focus-within:ring-offset-2 hover:text-primary-500"
                                     >
                                       <span>Upload a Video</span>
                                       <input
@@ -158,14 +159,14 @@ export function UploadButton({ refetch }: { refetch: () => Promise<unknown> }) {
                     <div className=" relative mt-5 flex flex-row-reverse gap-2 sm:mt-4 ">
                       <Button
                         type="reset"
-                        variant="primary"
+                        variant="default"
                         size="lg"
                         onClick={() => handleSubmit()}
                       >
                         Upload
                       </Button>
                       <Button
-                        variant="secondary-gray"
+                        variant="secondary"
                         size="lg"
                         onClick={() => setOpen(false)}
                       >

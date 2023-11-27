@@ -2,7 +2,8 @@ import React, { useState, Fragment, useEffect } from "react";
 import { signIn, useSession } from "next-auth/react";
 import { api } from "~/utils/api";
 import { Close, FolderPlus } from "~/Components/Icons/Icons";
-import Button from "./Button";
+// import Button from "./Button";
+import { Button } from "../ui/button";
 import { Dialog, Transition } from "@headlessui/react";
 
 export default function SaveButton({ videoId }: { videoId: string }) {
@@ -78,12 +79,12 @@ export default function SaveButton({ videoId }: { videoId: string }) {
     <>
       {/* 1 Start  */}
       <Button
-        variant="secondary-gray"
-        size="2xl"
+     variant={"secondary"}
+       size={"lg"}
         onClick={sessionData ? () => setOpen(true) : () => void signIn()}
-        className="item-end flex"
+        className="item-end flex text-primary"
       >
-        <FolderPlus className="mr-2 h-5 w-5 shrink-0 stroke-gray-600" />
+        <FolderPlus className="mr-2 h-5 w-5 shrink-0 stroke-primary text-primary" />
         Save
       </Button>
       {/* 1 End  */}

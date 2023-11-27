@@ -3,6 +3,7 @@ import { Fragment, useRef, useState } from "react";
 import { Dialog, Transition } from "@headlessui/react";
 import { useSession } from "next-auth/react";
 import { api } from "~/utils/api";
+import { Button } from "../ui/button";
 
 export default function DeleteButton({
   videoId,
@@ -29,8 +30,9 @@ export default function DeleteButton({
 
   return (
     <>
-      <button onClick={() => handleClick()}>
-        <Trash className="mr-2 h-5 w-5 shrink-0 stroke-gray-600" />
+      <button onClick={() => handleClick()}
+      className=" ">
+        <Trash className="mr-2 h-5 w-5 shrink-0 stroke-primary" />
       </button>
 
       <Transition.Root show={open} as={Fragment}>

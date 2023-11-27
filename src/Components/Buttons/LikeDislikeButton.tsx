@@ -3,6 +3,7 @@ import { useEngagementButton } from "~/Hooks/useEngagement";
 import { api } from "~/utils/api";
 import { ThumbsUp, ThumbsDown } from "~/Components/Icons/Icons";
 import { signIn, useSession } from "next-auth/react";
+import Button from "./Button";
 
 interface LikeDislikeButtonProps {
   EngagementData: {
@@ -32,7 +33,7 @@ export default function LikeDislikeButton({
   const { data: sessionData } = useSession();
   return (
     <div className="flex-end isolate  inline-flex rounded-md shadow-sm">
-      <button
+      <Button
         type="button"
         onClick={
           sessionData
@@ -43,23 +44,24 @@ export default function LikeDislikeButton({
                 })
             : () => void signIn()
         }
-        className={`focus group relative inline-flex items-center rounded-l-md px-2 py-2 ring-1 ring-inset ring-gray-300  focus:z-10
+        className={`focus group relative inline-flex items-center rounded-l-md px-2 py-2 ring-1 ring-inset ring-primary mr-4  focus:z-10
         ${
           userChoice.like
-            ? "group bg-primary-600 text-white hover:text-gray-900 group-hover:stroke-gray-900"
-            : "group bg-white text-gray-600 hover:text-primary-600 group-hover:stroke-primary-600"
+            ? "group bg-base-300 text-primary hover:text-secondary group-hover:stroke-accent"
+            : "group bg-base-300 text-primary hover:text-primary-600 group-hover:stroke-primary-600"
         }`}
       >
         <ThumbsUp
           className={`group h-4 w-4 shrink-0 ${
             userChoice.like
-              ? "group fill-white group-hover:stroke-gray-900"
-              : "group stroke-gray-600 group-hover:stroke-primary-600"
+              ? "group fill-primary group-hover:stroke-secondary"
+              : "group stroke-primary group-hover:stroke-secondary"
           }`}
         />
-        <p className="pl-2">{likeCount}</p>
-      </button>
-      <button
+        <p className="pl-2 text-primary">{likeCount}</p>
+      </Button>
+      <Button
+      variant="primary"
         onClick={
           sessionData
             ? () =>
@@ -69,22 +71,22 @@ export default function LikeDislikeButton({
                 })
             : () => void signIn()
         }
-        className={`focus group relative -ml-px inline-flex items-center rounded-r-md  px-2 py-2 ring-1 ring-inset ring-gray-300 focus:z-10
+        className={`focus group relative -ml-px inline-flex items-center rounded-r-md  px-2 py-2 ring-1 ring-inset ring-primary focus:z-10
         ${
           userChoice.dislike
-            ? "group bg-error-600 text-white hover:text-gray-900 group-hover:stroke-gray-900"
-            : "group bg-white text-gray-600 hover:text-error-600 group-hover:stroke-error-600"
+            ? "group bg-error text-primary hover:text-secondary group-hover:stroke-accent"
+            : "group bg-base-300 text-primary hover:text-secondary group-hover:stroke-accent stroke-accent"
         }`}
       >
         <ThumbsDown
           className={`group h-4 w-4 shrink-0 ${
             userChoice.dislike
-              ? "group fill-white group-hover:stroke-gray-900"
-              : "group stroke-gray-600 group-hover:stroke-error-600"
+              ? "group fill-primary group-hover:stroke-gray-900"
+              : "group stroke-primary group-hover:stroke-error"
           }`}
         />
-        <p className="pl-2">{dislikeCount}</p>
-      </button>
+        <p className="pl-2 text-primary">{dislikeCount}</p>
+      </Button>
     </div>
   );
 }

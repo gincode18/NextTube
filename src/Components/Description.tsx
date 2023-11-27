@@ -21,8 +21,8 @@ export default function Description({
   } else if (text?.length < length) {
     return (
       <>
-        {border ? <div className="border-b border-gray-200"></div> : ""}
-        <p className="my-3 text-left text-sm font-semibold text-gray-600">
+        {border ? <div className="border-b border-primary"></div> : ""}
+        <p className="my-3 text-left text-sm font-semibold text">
           {text}
         </p>
       </>
@@ -30,14 +30,14 @@ export default function Description({
   } else {
     return (
       <>
-        {border ? <div className="border-b border-gray-200"></div> : ""}
+        {border ? <div className="border-b border-primary"></div> : ""}
         <div className="relative w-full ">
           <button
             onClick={toggleExpand}
             className="flex flex-row place-content-evenly"
           >
             <p
-              className={`text-left text-sm font-semibold text-gray-600 ${
+              className={`text-left text-sm font-semibold ${
                 !isExpanded ? "line-clamp-2" : ""
               }`}
             >

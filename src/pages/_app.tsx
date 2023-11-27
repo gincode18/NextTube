@@ -15,7 +15,7 @@ const MyApp: AppType<{ session: Session | null }> = ({
     <SessionProvider session={session}>
       <ThemeProvider
         attribute="data-theme"
-        defaultTheme="aqua"
+        defaultTheme="dracula"
         enableSystem={false}
         storageKey="notes-theme"
       >
