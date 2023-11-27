@@ -57,7 +57,7 @@ const ProfileFollowigs: NextPage = () => {
           {errorTypes ? (
             <Error />
           ) : (
-            <ul role="list" className="-mt-8 divide-y divide-gray-200">
+            <ul role="list" className="-mt-8 divide-y divide-primary">
               {user?.followings.map((following) => (
                 <li className="py-4" key={following.following.id}>
                   <div className="flex gap-2">
@@ -67,10 +67,10 @@ const ProfileFollowigs: NextPage = () => {
                     />
                     <div className="flex w-full flex-row justify-between">
                       <div className="flex flex-col text-sm">
-                        <p className="font-semibold text-gray-900">
+                        <p className="font-semibold text-primary">
                           {following.following.name}
                         </p>
-                        <p className="text-gray-600">
+                        <p className="text-secondary">
                           {following.following?.handle}
                         </p>
                       </div>

@@ -45,16 +45,16 @@ export default function AnnouncementButton({
           className={`focus r text-regular group relative inline-flex items-center rounded-l-md  px-2  py-2  focus:z-10
         ${
           userChoice.like
-            ? "group text-primary-600 hover:text-gray-900 group-hover:stroke-gray-900 "
-            : "group bg-white text-gray-600  hover:text-primary-600 group-hover:stroke-primary-600"
+            ? "group text-primary bg-accent hover:text-secondary group-hover:stroke-secondary border-primary  stroke-primary"
+            : "group  text-primary bg-base-100 hover:text-secondary group-hover:stroke-primary"
         }`}
         >
           <ThumbsUp
             className={`group h-5 w-5 shrink-0
               ${
                 userChoice.like
-                  ? "group fill-primary-600 stroke-primary-600 group-hover:stroke-gray-900"
-                  : "group stroke-gray-600 group-hover:stroke-primary-600"
+                  ? "group fill-primary-600 stroke-primary-600 group-hover:stroke-secondary"
+                  : "group stroke-primary group-hover:stroke-secondary"
               }
               `}
           />
@@ -74,16 +74,16 @@ export default function AnnouncementButton({
 
         ${
           userChoice.dislike
-            ? "group text-error-600 hover:text-gray-900 group-hover:stroke-gray-900 "
-            : "group bg-white text-gray-600  hover:text-error-600 group-hover:stroke-error-600"
+            ? "group bg-accent text-primary hover:text-secondary group-hover:stroke-secondary border-primary stroke-primary"
+            : "group bg-base-100  text-primary stroke-primary  hover:text-secondary group-hover:stroke-primary"
         }`}
         >
           <ThumbsDown
             className={`group h-5 w-5 shrink-0
             ${
               userChoice.dislike
-                ? "group fill-error-600 stroke-error-600 group-hover:stroke-gray-900"
-                : "group stroke-gray-600 group-hover:stroke-error-600"
+                ? "group fill-error-600 stroke-error group-hover:stroke-primary"
+                : "group stroke-primary group-hover:stroke-error-600"
             }
             }
               `}
