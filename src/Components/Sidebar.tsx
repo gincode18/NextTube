@@ -1,6 +1,6 @@
 import { Fragment, useEffect } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { signIn, useSession } from "next-auth/react";
+import { signIn, useSession,signOut } from "next-auth/react";
 import Button from "./Buttons/Button";
 
 import {
@@ -20,7 +20,7 @@ import {
   LogOut,
   Close,
 } from "./Icons/Icons";
-import  Logo  from "./Icons/Logo";
+import Logo from "./Icons/Logo";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { UserImage } from "./Components";
@@ -155,7 +155,7 @@ export default function Sidebar({
       <div
         className={classNames(
           closeSidebar ? "lg:w-20" : "lg:w-56",
-          "bottom-0 top-16  hidden lg:fixed lg:z-40 lg:flex lg:flex-col"
+          "bottom-0 top-16  hidden lg:fixed lg:z-40 lg:flex lg:flex-col",
         )}
       >
         {/*  Sidebar component FOR DESKTOP, swap this element with another sidebar if you like */}
@@ -179,15 +179,17 @@ export default function Sidebar({
                         }}
                         className={classNames(
                           item.current
-                            ? "  bg-secondary text-primary border border-primary"
-                            : " text-secondary  border  border-primary hover:bg-secondary hover:text-primary ",
-                          "group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6"
+                            ? "  border border-primary bg-secondary text-primary"
+                            : " border  border-primary  text-secondary hover:bg-secondary hover:text-primary ",
+                          "group flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6",
                         )}
                       >
                         {item.current
-                          ? item.icon("h-5 w-5 shrink-0 stroke-primary group-hover:animate-bounce ")
+                          ? item.icon(
+                              "h-5 w-5 shrink-0 stroke-primary group-hover:animate-bounce ",
+                            )
                           : item.icon(
-                              "h-5 w-5 shrink-0  stroke-primary  group-hover:stroke-primary group-hover:animate-bounce"
+                              "h-5 w-5 shrink-0  stroke-primary  group-hover:stroke-primary group-hover:animate-bounce",
                             )}
                         <p className={classNames(closeSidebar ? "hidden" : "")}>
                           {item.name}
@@ -209,11 +211,11 @@ export default function Sidebar({
                         : void signIn();
                     }
                   }}
-                  className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6   text-secondary hover:bg-secondary hover:text-primary border border-primary"
+                  className="group -mx-2 flex gap-x-3 rounded-md border border-primary p-2 text-sm   font-semibold leading-6 text-secondary hover:bg-secondary hover:text-primary"
                 >
                   <Settings
                     className={
-                      "h-5 w-5 shrink-0 stroke-primary group-hover:stroke-primary group-hover:animate-spin"
+                      "h-5 w-5 shrink-0 stroke-primary group-hover:animate-spin group-hover:stroke-primary"
                     }
                   />
                   <p className={classNames(closeSidebar ? "hidden" : "")}>
@@ -222,11 +224,11 @@ export default function Sidebar({
                 </Link>
                 <Link
                   href="/Blog/Help"
-                  className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-secondary hover:bg-secondary hover:text-primary border border-primary"
+                  className="group -mx-2 flex gap-x-3 rounded-md border border-primary p-2 text-sm font-semibold leading-6 text-secondary hover:bg-secondary hover:text-primary"
                 >
                   <HelpCircle
                     className={
-                      "h-5 w-5 shrink-0 stroke-primary group-hover:stroke-primary group-hover:animate-bounce"
+                      "h-5 w-5 shrink-0 stroke-primary group-hover:animate-bounce group-hover:stroke-primary"
                     }
                   />
                   <p className={classNames(closeSidebar ? "hidden" : "")}>
@@ -280,7 +282,7 @@ export default function Sidebar({
                   </button>
                 </div>
                 {/* Sidebar component FOR MOBILE, swap this element with another sidebar if you like */}
-                <div className=" flex grow  flex-col gap-y-5 overflow-y-auto border-r  border-primary  bg-transparent backdrop-blur-xl  px-6 pb-4">
+                <div className=" flex grow  flex-col gap-y-5 overflow-y-auto border-r  border-primary  bg-transparent px-6  pb-4 backdrop-blur-xl">
                   <nav className="flex flex-1 flex-col pt-4">
                     <ul role="list" className="flex flex-1 flex-col gap-y-4">
                       <Logo className="w-24" />
@@ -298,15 +300,13 @@ export default function Sidebar({
                                   item.current
                                     ? " bg-secondary text-primary"
                                     : " text-secondary hover:bg-primary hover:text-primary",
-                                  "group flex gap-x-3 rounded-md px-2 py-1.5 text-sm font-semibold leading-6"
+                                  "group flex gap-x-3 rounded-md px-2 py-1.5 text-sm font-semibold leading-6",
                                 )}
                               >
                                 {item.current
-                                  ? item.icon(
-                                      "h-5 w-5 shrink-0 stroke-primary"
-                                    )
+                                  ? item.icon("h-5 w-5 shrink-0 stroke-primary")
                                   : item.icon(
-                                      "h-5 w-5 shrink-0 stroke-primary  group-hover:stroke-secondary"
+                                      "h-5 w-5 shrink-0 stroke-primary  group-hover:stroke-secondary",
                                     )}
                                 {item.name}
                               </Link>
@@ -318,22 +318,22 @@ export default function Sidebar({
                       <li className="mt-auto border-b ">
                         <Link
                           href="/Blog/Privacy"
-                          className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-primary-600"
+                          className="hover:text-primary-600 group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50"
                         >
                           <Lock
                             className={
-                              "h-5 w-5 shrink-0 stroke-gray-500 group-hover:stroke-primary-600"
+                              "group-hover:stroke-primary-600 h-5 w-5 shrink-0 stroke-gray-500"
                             }
                           />
                           Privacy
                         </Link>
                         <Link
                           href="/Blog/TOS"
-                          className="group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50 hover:text-primary-600"
+                          className="hover:text-primary-600 group -mx-2 flex gap-x-3 rounded-md p-2 text-sm font-semibold leading-6 text-gray-700 hover:bg-gray-50"
                         >
                           <File
                             className={
-                              "h-5 w-5 shrink-0 stroke-gray-500 group-hover:stroke-primary-600"
+                              "group-hover:stroke-primary-600 h-5 w-5 shrink-0 stroke-gray-500"
                             }
                           />
                           Terms of Service
@@ -355,7 +355,14 @@ export default function Sidebar({
                               )}
                             </p>
                           </div>
-                          <Button variant="tertiary-gray" href="#" size="lg">
+                          <Button
+                            variant="tertiary-gray"
+                            href="#"
+                            size="lg"
+                            onClick={() => {
+                              void signOut();
+                            }}
+                          >
                             <LogOut className="w-5 stroke-gray-600" />
                           </Button>
                         </div>
