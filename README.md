@@ -42,9 +42,6 @@ Get a glimpse of NextTube in action by clicking on the thumbnail below to watch 
 
 [![Watch the video]()](https://github.com/gincode18/NextTube/assets/91776192/a5acf7d2-94b8-4a4d-ac37-9ef690aff6dd)
 
-https://github.com/gincode18/NextTube/assets/91776192/a5acf7d2-94b8-4a4d-ac37-9ef690aff6dd
-
-
 ## 🚀 Get Started with NextTube
 
 To get started with NextTube, visit our GitHub repository and clone the project:
