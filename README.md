@@ -38,9 +38,11 @@ Manage your data effortlessly with the streamlined and intuitive database operat
 
 ## 🚀 NextTube Demo Video
 
-Check out this demo video to see NextTube in action:
+Get a glimpse of NextTube in action by clicking on the thumbnail below to watch the demo video:
 
-[![NextTube Demo Video](https://res.cloudinary.com/di3kr6txo/video/upload/v1702577668/bpngajnwkhprpigkyu4n.mp4)](https://res.cloudinary.com/di3kr6txo/video/upload/v1702577668/bpngajnwkhprpigkyu4n.mp4)
+[![Watch the video](https://via.placeholder.com/640x360.png?text=Click+to+Watch+the+NextTube+Demo)](https://res.cloudinary.com/di3kr6txo/video/upload/v1702577668/bpngajnwkhprpigkyu4n.mp4)
+
+**Note:** Replace `https://via.placeholder.com/640x360.png?text=Click+to+Watch+the+NextTube+Demo` with a thumbnail image URL of your choice. This URL is currently a placeholder that displays a generic "Click to Watch the NextTube Demo" message. You might want to generate a thumbnail from the video itself or use an image that represents the content of your demo.
 
 ## 🚀 Get Started with NextTube
 
