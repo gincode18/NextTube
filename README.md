@@ -1,5 +1,7 @@
 # NextTube - Full Stack Video Streaming with T3 Stack
+For a live demonstration of NextTube, check out our live deployment:
 
+🔗 https://next-tube-krub.vercel.app/
 ## 🚀 Introducing NextTube
 
 Welcome to **NextTube**, a cutting-edge full-stack video streaming application built with the power of the T3 Stack. This project leverages the synergy of Next.js, Typescript, TRPC, Next Auth, Prisma, and Tailwind CSS, to provide a seamless and robust video streaming experience.
